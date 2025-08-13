@@ -64,3 +64,21 @@ ln -s /opt/netbox-scanner-api/netbox-scanner-api /etc/logrotate.d/netbox-scanner
 - Check systemd logs: `journalctl -u netbox-scanner-api`
 - Ensure NetboxScanner user has proper write permissions in NetBox.
 - When testing make sure you test from the device sat as ALLOWED_SOURCE
+
+## EXTRA Features
+Scanner.py can be used in standalone mode:
+```bash
+/opt/netbox-scanner-api/venv/bin/python /opt/netbox-scanner-api/scanner.py -h
+usage: scanner.py [-h] (--ip IP | --prefix PREFIX | --auto)
+
+NetBox Scanner
+
+optional arguments:
+  -h, --help       show this help message and exit
+  --ip IP          Scan a single IP (e.g. 10.0.0.5)
+  --prefix PREFIX  Scan a prefix (e.g. 10.0.0.0/24)
+  --auto           Scan all prefixes with cf scan_enabled=true
+```
+--auto queries Netbox for all Prefixes with Host Discovery set to True and scans those prefixes.
+You can uses this as a cron task: (scan every 2 hours)
+`0 */2 * * * /opt/netbox-scanner-api/venv/bin/python /opt/netbox-scanner-api/scanner.py --auto >> /var/log/netbox_scanner_api.log 2>&1`

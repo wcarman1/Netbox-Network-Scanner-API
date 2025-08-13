@@ -1,0 +1,20 @@
+[Unit]
+Description=Netbox Scanner API
+After=network.target
+
+[Service]
+WorkingDirectory=/opt/netbox-scanner-api
+Environment="PYTHONUNBUFFERED=1"
+Environment="PYTHONPATH=/opt/netbox-scanner-api"
+
+ExecStart=/opt/netbox-scanner-api/venv/bin/gunicorn \
+  --config /opt/netbox-scanner-api/gunicorn.conf.py \
+  wsgi:app
+
+Restart=on-failure
+RestartSec=3s
+StartLimitBurst=5
+StartLimitIntervalSec=60
+
+[Install]
+WantedBy=multi-user.target

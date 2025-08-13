@@ -3,7 +3,7 @@
 NetBox Scanner
  - Scan a single IP (--ip)
  - Scan a full prefix (--prefix)
- - Auto mode (--auto): find all prefixes with cf scan_enabled=true and scan them
+ - Auto mode (--auto): find all prefixes with custom field scan_enabled=true and scan them
 
 Relies on:
   config.py          -> NETBOX_URL, NETBOX_API_TOKEN, MAX_CONCURRENT_IP_SCANS, SCAN_TIMEOUT
@@ -258,7 +258,7 @@ def _parse_args():
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--ip", help="Scan a single IP (e.g. 10.0.0.5)")
     group.add_argument("--prefix", help="Scan a prefix (e.g. 10.0.0.0/24)")
-    group.add_argument("--auto", action="store_true", help="Scan all prefixes with cf scan_enabled=true")
+    group.add_argument("--auto", action="store_true", help="Scan all prefixes in NetBox with custom field scan_enabled=true")
     return parser.parse_args()
 
 

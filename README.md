@@ -82,3 +82,10 @@ optional arguments:
 --auto queries Netbox for all Prefixes with Host Discovery set to True and scans those prefixes.
 You can uses this as a cron task: (scan every 2 hours)
 `0 */2 * * * /opt/netbox-scanner-api/venv/bin/python /opt/netbox-scanner-api/scanner.py --auto >> /var/log/netbox_scanner_api.log 2>&1`
+
+## Updates
+```
+cd /opt/netbox-scanner-api
+git pull
+systemctl restart netbox-scanner-api
+```

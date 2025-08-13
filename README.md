@@ -77,7 +77,7 @@ optional arguments:
   -h, --help       show this help message and exit
   --ip IP          Scan a single IP (e.g. 10.0.0.5)
   --prefix PREFIX  Scan a prefix (e.g. 10.0.0.0/24)
-  --auto           Scan all prefixes with cf scan_enabled=true
+  --auto           Scan all prefixes in NetBox with custom field scan_enabled=true
 ```
 --auto queries Netbox for all Prefixes with Host Discovery set to True and scans those prefixes.
 You can uses this as a cron task: (scan every 2 hours)

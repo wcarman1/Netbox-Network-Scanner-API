@@ -1,6 +1,6 @@
 # Netbox Network Scanner API Service Setup
 
-This guide explains how to deploy the standalone scan server that receives requests from NetBox Network Scanner Plugin and runs your network scans.
+This guide explains how to deploy the standalone scan server that receives requests from NetBox Network Scanner Plugin and runs your network scans. Availible here https://github.com/wcarman1/Netbox-Network-Scanner-Plugin
 
 ## Prerequisites
 
